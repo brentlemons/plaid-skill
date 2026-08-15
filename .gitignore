@@ -1,11 +1,70 @@
-.DS_Store
-*.log
+# --- Secrets / credentials (Plaid keys, tokens) ---
 .env
 .env.*
-node_modules/
+!.env.example
+secrets.json
+credentials.json
+*.pem
+.plaid/
+
+# --- Python ---
 __pycache__/
 *.py[cod]
+*$py.class
+*.so
+
+# Packaging / build
+build/
+dist/
+sdist/
+wheels/
+*.egg-info/
+*.egg
+.eggs/
+MANIFEST
+
+# Virtual environments
 .venv/
 venv/
-dist/
-build/
+env/
+ENV/
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.pyre/
+.pytype/
+.dmypy.json
+dmypy.json
+.tox/
+.nox/
+.hypothesis/
+.ipynb_checkpoints/
+
+# Coverage
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+*.cover
+nosetests.xml
+
+# Type stubs installed locally
+.pyright/
+
+# --- Editors / OS ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- Claude Code local state ---
+.claude/settings.local.json
+
+# --- Misc ---
+*.log
+tmp/
+scratch/
