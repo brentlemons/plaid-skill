@@ -1,0 +1,16 @@
+{
+  "_fixture": {
+    "endpoint": "/accounts/balance/get",
+    "http_status": 400,
+    "source": "hand-shaped placeholder",
+    "captured": null,
+    "note": "Replaced by the walking skeleton's two runs if either produces this condition. The sandbox capture needs no redaction; a real-account capture is redacted first.",
+    "redacted": "n/a - nothing real in this file"
+  },
+  "display_message": "The login details of this item have changed.",
+  "error_code": "ITEM_LOGIN_REQUIRED",
+  "error_message": "the login details of this item have changed (credentials, MFA, or required user action) and a user login is required to update this information.",
+  "error_type": "ITEM_ERROR",
+  "request_id": "placeholder-request-id",
+  "suggested_action": null
+}

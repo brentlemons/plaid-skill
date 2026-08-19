@@ -1,0 +1,37 @@
+#!/bin/sh
+#
+# pre-commit — refuse any commit whose staged changes contain a secret.
+#
+# This repository is public and holds the setup instructions for a Plaid
+# credential. Plaid keys are not covered by GitHub's secret-scanning partner
+# programme, so there is no server-side backstop: this hook is the whole
+# defence, and it fails closed.
+#
+# The hook lives in the repository rather than in .git/hooks so it survives a
+# fresh clone. It only takes effect once git is told where to look:
+#
+#     git config core.hooksPath .githooks
+#
+# --redact is not optional. Without it gitleaks prints the secret it caught
+# into the terminal it is protecting, which turns a blocked commit into a
+# disclosure.
+
+set -u
+
+if ! command -v gitleaks >/dev/null 2>&1; then
+	printf '%s\n' "pre-commit: gitleaks is not installed, so staged changes cannot be scanned." >&2
+	printf '%s\n' "pre-commit: this hook fails closed. Install gitleaks and commit again." >&2
+	printf '%s\n' "pre-commit:   macOS    brew install gitleaks" >&2
+	printf '%s\n' "pre-commit:   Linux    see https://github.com/gitleaks/gitleaks#installing" >&2
+	exit 1
+fi
+
+if ! gitleaks protect --staged --redact; then
+	printf '%s\n' "pre-commit: gitleaks found a secret in the staged changes. Commit refused." >&2
+	printf '%s\n' "pre-commit: the finding above is redacted on purpose. Remove the value from" >&2
+	printf '%s\n' "pre-commit: the file, keep it in your environment file outside this repository," >&2
+	printf '%s\n' "pre-commit: and stage the change again." >&2
+	exit 1
+fi
+
+exit 0

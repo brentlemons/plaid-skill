@@ -1,0 +1,16 @@
+{
+  "_fixture": {
+    "endpoint": "/accounts/balance/get",
+    "http_status": 429,
+    "source": "hand-shaped placeholder",
+    "captured": null,
+    "note": "Replaced by the walking skeleton's two runs if either produces this condition. The sandbox capture needs no redaction; a real-account capture is redacted first.",
+    "redacted": "n/a - nothing real in this file"
+  },
+  "display_message": null,
+  "error_code": "ACCOUNTS_LIMIT",
+  "error_message": "rate limit exceeded for attempts to access this item. please try back later.",
+  "error_type": "RATE_LIMIT_EXCEEDED",
+  "request_id": "placeholder-request-id",
+  "suggested_action": null
+}

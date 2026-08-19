@@ -1,0 +1,62 @@
+{
+  "_fixture": {
+    "endpoint": "/accounts/balance/get",
+    "source": "hand-shaped placeholder",
+    "captured": null,
+    "note": "Replaced by the walking skeleton's two runs. The sandbox capture needs no redaction; the real-account capture is redacted first - real balances, account numbers, and institution names become obvious placeholders.",
+    "redacted": "n/a - nothing real in this file"
+  },
+  "accounts": [
+    {
+      "account_id": "placeholder-account-id-0000",
+      "balances": {
+        "available": 812.44,
+        "current": 845.19,
+        "iso_currency_code": "USD",
+        "limit": null,
+        "unofficial_currency_code": null
+      },
+      "mask": "0000",
+      "name": "Placeholder Checking",
+      "official_name": "Placeholder Bank Everyday Checking",
+      "subtype": "checking",
+      "type": "depository"
+    },
+    {
+      "account_id": "placeholder-account-id-1111",
+      "balances": {
+        "available": 5300.0,
+        "current": 5300.0,
+        "iso_currency_code": "USD",
+        "limit": null,
+        "unofficial_currency_code": null
+      },
+      "mask": "1111",
+      "name": "Placeholder Savings",
+      "official_name": "Placeholder Bank Savings",
+      "subtype": "savings",
+      "type": "depository"
+    },
+    {
+      "account_id": "placeholder-account-id-2222",
+      "balances": {
+        "available": 1450.0,
+        "current": -550.0,
+        "iso_currency_code": "USD",
+        "limit": 2000.0,
+        "unofficial_currency_code": null
+      },
+      "mask": "2222",
+      "name": "Placeholder Rewards Card",
+      "official_name": "Placeholder Bank Rewards Credit Card",
+      "subtype": "credit card",
+      "type": "credit"
+    }
+  ],
+  "item": {
+    "institution_id": "ins_placeholder",
+    "item_id": "placeholder-item-id-0000",
+    "webhook": null
+  },
+  "request_id": "placeholder-request-id"
+}

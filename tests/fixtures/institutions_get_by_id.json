@@ -1,0 +1,16 @@
+{
+  "_fixture": {
+    "endpoint": "/institutions/get_by_id",
+    "source": "hand-shaped placeholder",
+    "captured": null,
+    "note": "Replaced by the walking skeleton's two runs. The sandbox capture needs no redaction; the real-account capture is redacted first - the real institution name becomes an obvious placeholder.",
+    "redacted": "n/a - nothing real in this file"
+  },
+  "institution": {
+    "country_codes": ["US"],
+    "institution_id": "ins_placeholder",
+    "name": "Placeholder Bank",
+    "products": ["balance"]
+  },
+  "request_id": "placeholder-request-id"
+}

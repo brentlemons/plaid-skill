@@ -62,7 +62,18 @@ Thumbs.db
 *.swo
 
 # --- Claude Code local state ---
-.claude/settings.local.json
+# The AI-DLC framework shell that built this skill. Excluded for the same
+# reason as aidlc/: the skill is the deliverable, the framework is working
+# material. 3.2 MB across 257 files that would otherwise bury the actual
+# repository contents for anyone cloning it.
+.claude/
+
+# --- AI-DLC workflow record ---
+# Working material, not part of the published skill. The record holds the
+# audit trail, stage artifacts, and interview transcripts for how this
+# repository was built; the deliverable is the skill directory, the tests,
+# and the README.
+aidlc/
 
 # --- Misc ---
 *.log

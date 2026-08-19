@@ -1,0 +1,51 @@
+#!/bin/sh
+#
+# pre-push — run the test suite (blocking) and the linter (advisory) before
+# anything leaves this machine.
+#
+# There is no CI in this project, so this hook is the only place the suite runs
+# mechanically. Like the pre-commit hook it lives in the repository and only
+# takes effect once git is told where to look:
+#
+#     git config core.hooksPath .githooks
+#
+# pytest is blocking: a gate that silently skips is not a gate. ruff is
+# advisory when it is absent, because the toolchain choice is a working default
+# rather than a decision anyone signed off on — but a ruff that is installed and
+# unhappy does block the push.
+
+set -u
+
+repo_root=$(git rev-parse --show-toplevel) || exit 1
+cd "$repo_root" || exit 1
+
+# Resolve the interpreter first: ruff is normally installed into the same
+# virtualenv as pytest, so looking for ruff on PATH alone would silently skip
+# the lint on exactly the setup the README tells you to create.
+if [ -n "${VIRTUAL_ENV:-}" ] && [ -x "$VIRTUAL_ENV/bin/python3" ]; then
+	python_bin="$VIRTUAL_ENV/bin/python3"
+elif [ -x ".venv/bin/python3" ]; then
+	python_bin=".venv/bin/python3"
+else
+	python_bin="python3"
+fi
+
+if "$python_bin" -c "import ruff" >/dev/null 2>&1; then
+	"$python_bin" -m ruff check . || exit 1
+	"$python_bin" -m ruff format --check . || exit 1
+elif command -v ruff >/dev/null 2>&1; then
+	ruff check . || exit 1
+	ruff format --check . || exit 1
+else
+	printf '%s\n' "pre-push: ruff not found; skipping lint. This is advisory, not a failure." >&2
+fi
+
+if ! "$python_bin" -c "import pytest" >/dev/null 2>&1; then
+	printf '%s\n' "pre-push: pytest is not importable by $python_bin, so the suite cannot run." >&2
+	printf '%s\n' "pre-push: this hook fails closed. See the Development section of README.md." >&2
+	exit 1
+fi
+
+"$python_bin" -m pytest -q || exit 1
+
+exit 0

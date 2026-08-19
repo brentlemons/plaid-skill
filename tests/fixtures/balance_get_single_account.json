@@ -1,0 +1,32 @@
+{
+  "_fixture": {
+    "endpoint": "/accounts/balance/get",
+    "source": "hand-shaped placeholder",
+    "captured": null,
+    "note": "Replaced by the walking skeleton's two runs. The sandbox capture needs no redaction; the real-account capture is redacted first - real balances, account numbers, and institution names become obvious placeholders.",
+    "redacted": "n/a - nothing real in this file"
+  },
+  "accounts": [
+    {
+      "account_id": "placeholder-account-id-0000",
+      "balances": {
+        "available": 812.44,
+        "current": 845.19,
+        "iso_currency_code": "USD",
+        "limit": null,
+        "unofficial_currency_code": null
+      },
+      "mask": "0000",
+      "name": "Placeholder Checking",
+      "official_name": "Placeholder Bank Everyday Checking",
+      "subtype": "checking",
+      "type": "depository"
+    }
+  ],
+  "item": {
+    "institution_id": "ins_placeholder",
+    "item_id": "placeholder-item-id-0000",
+    "webhook": null
+  },
+  "request_id": "placeholder-request-id"
+}
